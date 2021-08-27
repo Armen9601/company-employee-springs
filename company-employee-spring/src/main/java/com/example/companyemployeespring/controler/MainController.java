@@ -8,7 +8,12 @@ public class MainController {
 
     @GetMapping("/")
     public String main() {
-        return "index";
+        return "redirect:/login";
+    }
+
+    @GetMapping("/accessDenied")
+    public String acsses() {
+        return "403";
     }
 
 

@@ -4,17 +4,28 @@
     <meta charset="UTF-8">
     <title>Company</title>
 </head>
-<body>
-<a href="/">home</a> |
-<a href="/addCompany">Add Company</a>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.0/css/dataTables.jqueryui.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/scroller/2.0.5/css/scroller.jqueryui.min.css">
 
-<table border="1">
+<body>
+<a href="/addCompany"><button>Add Company</button> </a> |
+<a href="/employee"><button>Employes</button> </a> |
+<a href="/logout"><button>Logout</button></a>
+
+<h2 style="text-align: center;">COMPANIES</h2>
+<table id="example" class="display nowrap" style="width:100%">
+    <thead>
     <tr>
         <th>id</th>
         <th>name</th>
         <th>size</th>
         <th>adress</th>
+        <th>delete</th>
     </tr>
+
+    </thead>
+    <tbody>
     <tr th:each="allCompany:${allCompanies}">
         <td th:text="${allCompany.getId()}"></td>
         <td th:text="${allCompany.getName()}"></td>
@@ -22,6 +33,17 @@
         <td th:text="${allCompany.getAdress()}"></td>
         <td><a th:href="@{/delete(id=${allCompany.getId()})}">Delete</a></td>
     </tr>
+    </tbody>
 </table>
 </body>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.11.0/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.0/js/dataTables.jqueryui.min.js"></script>
+<script src="https://cdn.datatables.net/scroller/2.0.5/js/dataTables.scroller.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#example').DataTable();
+    });
+</script>
 </html>

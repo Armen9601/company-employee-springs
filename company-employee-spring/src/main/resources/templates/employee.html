@@ -4,11 +4,16 @@
     <meta charset="UTF-8">
     <title>Company</title>
 </head>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.0/css/dataTables.jqueryui.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/scroller/2.0.5/css/scroller.jqueryui.min.css">
 <body>
-<a href="/">home</a> |
-<a href="/addEmploye">Add Employee </a>
-
-<table border="1">
+<a href="/addEmploye"><button>Add Employee</button> </a> |
+<a href="/companies"><button>Companies</button> </a> |
+<a href="/logout"><button>Logout</button></a>
+<h2 style="text-align: center;">Employes</h2>
+<table id="example" class="display nowrap" style="width:100%">
+<thead>
     <tr>
         <th>id</th>
         <th>name</th>
@@ -18,7 +23,10 @@
         <th>salary</th>
         <th>position</th>
         <th>company name</th>
+        <th>delete</th>
     </tr>
+</thead>
+    <tbody>
     <tr th:each="allEmployee:${allEmployees}">
         <td th:text="${allEmployee.getId()}"></td>
         <td th:text="${allEmployee.getName()}"></td>
@@ -27,9 +35,20 @@
         <td th:text="${allEmployee.getPhoneNumber()}"></td>
         <td th:text="${allEmployee.getSalary()}"></td>
         <td th:text="${allEmployee.getPosition()}"></td>
-        <td th:text="${allEmployee.getCompany().getName()}"></td>
+        <td th:text="${allEmployee.getCompany().getId()}"></td>
         <td><a th:href="@{/empdelete(id=${allEmployee.getId()})}">Delete</a></td>
     </tr>
+    </tbody>
 </table>
 </body>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.11.0/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.0/js/dataTables.jqueryui.min.js"></script>
+<script src="https://cdn.datatables.net/scroller/2.0.5/js/dataTables.scroller.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#example').DataTable();
+    });
+</script>
 </html>

@@ -3,6 +3,8 @@ package com.example.companyemployeespring.controler;
 
 import com.example.companyemployeespring.entity.Company;
 import com.example.companyemployeespring.repository.CompanyRepository;
+import com.example.companyemployeespring.service.CompanyService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -15,13 +17,14 @@ import java.util.List;
 
 
 @Controller
+@RequiredArgsConstructor
 public class CompanyController {
-    @Autowired
-    private CompanyRepository companyRepository;
+
+    private final CompanyService companyService;
 
     @GetMapping("/companies")
     public String companies(ModelMap modelMap) {
-        List<Company> allCompanies = companyRepository.findAll();
+        List<Company> allCompanies = companyService.findAll();
         modelMap.addAttribute("allCompanies", allCompanies);
         return "company";
     }
@@ -34,13 +37,13 @@ public class CompanyController {
 
     @PostMapping("/add")
     public String addCompanies(@ModelAttribute Company company) {
-        companyRepository.save(company);
+        companyService.save(company);
         return "redirect:/companies";
     }
 
     @GetMapping("/delete")
     public String deleteCompany(@RequestParam int id) {
-        companyRepository.deleteById(id);
+        companyService.deleteById(id);
         return "redirect:/companies";
     }
 
