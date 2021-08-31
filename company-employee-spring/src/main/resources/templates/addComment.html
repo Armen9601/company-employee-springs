@@ -130,18 +130,17 @@
 
     }
 </style>
-<body>
-<a href="/companies" style="color: white">home</a>
-
-<form action="/add" method="post">
-    <label for=>name</label>
-    <input type="text" name="name" placeholder="name">
-    <label>Surname</label>
-    <input type="text" name="size" placeholder="size">
-    <label>Email</label>
-    <input type="text" name="adress" placeholder="adress">
-    <input type="submit" value="add">
-</form>
+<body id="home">
+<div style="margin-left: 100px; margin-right: 500px">
+    <div>
+        <form action="/e/addtopics" method="post">
+            <input type="hidden" name="topicId" th:value="${topicId}">
+            <label for=>text</label>
+            <input type="text" name="text" placeholder="text">
+            <input type="submit" value="ADD"/>
+        </form>
+    </div>
+</div>
 
 </body>
 </html>

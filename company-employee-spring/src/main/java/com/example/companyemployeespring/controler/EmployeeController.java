@@ -42,12 +42,9 @@ public class EmployeeController {
     }
 
 
-
-
-
     @GetMapping("/e")
     public String employeepage(ModelMap modelMap, @AuthenticationPrincipal CurrentUser currentUser) {
-        List<Employee> byCompanyId = employeeService.findByCompanyId(currentUser.getEmployee().getCompany().getId(),currentUser.getEmployee().getId());
+        List<Employee> byCompanyId = employeeService.findByCompanyId(currentUser.getEmployee().getCompany().getId(), currentUser.getEmployee().getId());
         modelMap.addAttribute("byCompanyId", byCompanyId);
         modelMap.addAttribute("employee", currentUser.getEmployee());
         return "empl";

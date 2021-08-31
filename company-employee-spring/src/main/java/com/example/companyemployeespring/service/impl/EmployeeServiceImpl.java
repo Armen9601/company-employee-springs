@@ -50,6 +50,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public List<Employee> findByCompanyId(int companyId, int currentId) {
-        return employeeRepository.findByCompanyIdAndIdNot(companyId,currentId);
+        return employeeRepository.findByCompanyIdAndIdNot(companyId, currentId);
     }
 }

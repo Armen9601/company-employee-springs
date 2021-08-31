@@ -36,6 +36,16 @@
                         </div>
                     </div>
                 </a>
+                <a href="/e/topics">
+                    <div class="col-md-4 py-3 py-md-0">
+                        <div class="card-service wow fadeInUp">
+                            <div class="circle-shape bg-primary text-white">
+                                <span class="mai-shield-checkmark"></span>
+                            </div>
+                            <p><span>Add</span>Topic</p>
+                        </div>
+                    </div>
+                </a>
                 <a href="/logout">
                     <div class="col-md-4 py-3 py-md-0">
                         <div class="card-service wow fadeInUp">
@@ -45,7 +55,7 @@
                         </div>
                     </div>
                 </a>
-            </div>
+
         </div>
     </div> <!-- .page-section -->
 
@@ -70,26 +80,27 @@
     <div class="container">
         <h1 class="text-center mb-5 wow fadeInUp">Our Employees</h1>
 
-            <div class="owl-carousel wow fadeInUp" id="doctorSlideshow">
-                <div class="item"  th:each="employesbyCompanyId:${byCompanyId}">
+        <div class="owl-carousel wow fadeInUp" id="doctorSlideshow">
+            <div class="item" th:each="employesbyCompanyId:${byCompanyId}">
 
-                    <div class="card-doctor" >
-                        <div class="header">
-                            <img th:src="@{/productImage(productUrl=${employesbyCompanyId.getPicUrl()})}" alt="">
-                            <div class="meta">
-                                <a th:href="@{/messages(id=${employesbyCompanyId.getId()})}"><span class="mai-logo-whatsapp"></span></a>
-                            </div>
-                        </div>
-                        <div class="body">
-                            <p class="text-xl mb-0"
-                               th:text="${employesbyCompanyId.getName()+' '+employesbyCompanyId.surname}"></p>
-                            <span class="text-sm text-grey" th:text="${employesbyCompanyId.getPosition()}"></span>
+                <div class="card-doctor">
+                    <div class="header">
+                        <img th:src="@{/productImage(productUrl=${employesbyCompanyId.getPicUrl()})}" alt="">
+                        <div class="meta">
+                            <a th:href="@{/messages(id=${employesbyCompanyId.getId()})}"><span
+                                    class="mai-logo-whatsapp"></span></a>
                         </div>
                     </div>
+                    <div class="body">
+                        <p class="text-xl mb-0"
+                           th:text="${employesbyCompanyId.getName()+' '+employesbyCompanyId.surname}"></p>
+                        <span class="text-sm text-grey" th:text="${employesbyCompanyId.getPosition()}"></span>
+                    </div>
                 </div>
+            </div>
 
-</div>
-</div>
+        </div>
+    </div>
 </div>
 
 <script src="../assets/js/jquery-3.5.1.min.js"></script>

@@ -2,44 +2,39 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Company</title>
+    <title>Topics</title>
 </head>
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.11.0/css/dataTables.jqueryui.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/scroller/2.0.5/css/scroller.jqueryui.min.css">
-
 <body>
-<a href="/addCompany">
-    <button>Add Company</button>
-</a> |
-<a href="/employee">
-    <button>Employes</button>
-</a> |
-<a href="/logout">
-    <button>Logout</button>
-</a>
 
-<h2 style="text-align: center;">COMPANIES</h2>
+<a href="/e/addtopics">
+    <button>Add Topic</button>
+</a>
 <table id="example" class="display nowrap" style="width:100%">
     <thead>
     <tr>
         <th>id</th>
-        <th>name</th>
-        <th>size</th>
-        <th>adress</th>
+        <th>text</th>
+        <th>Employee name</th>
+        <th>Employee surname</th>
+        <th>created date</th>
+        <th>Add Comment</th>
         <th>delete</th>
     </tr>
-
     </thead>
-    <tbody>
-    <tr th:each="allCompany:${allCompanies}">
-        <td th:text="${allCompany.getId()}"></td>
-        <td th:text="${allCompany.getName()}"></td>
-        <td th:text="${allCompany.getSize()}"></td>
-        <td th:text="${allCompany.getAdress()}"></td>
-        <td><a th:href="@{/delete(id=${allCompany.getId()})}">Delete</a></td>
+<tbody>
+    <tr th:each="topic:${allTopics}">
+        <td th:text="${topic.getId()}"></td>
+        <td th:text="${topic.getText()}"></td>
+        <td th:text="${topic.getEmployee().getName()}"></td>
+        <td th:text="${topic.getEmployee().getSurname()}"></td>
+        <td th:text="${topic.getCreatedDate()}"></td>
+        <td><a th:href="@{/e/comments(id=${topic.getId()})}">Comments</a></td>
+        <td><a th:if="${topic.getEmployee().getId()==currentuser.getId()}" th:href="@{/e/delete(id=${topic.getId()})}">Delete</a></td>
     </tr>
-    </tbody>
+</tbody>
 </table>
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -47,9 +42,17 @@
 <script src="https://cdn.datatables.net/1.11.0/js/dataTables.jqueryui.min.js"></script>
 <script src="https://cdn.datatables.net/scroller/2.0.5/js/dataTables.scroller.min.js"></script>
 
+
 <script>
     $(document).ready(function () {
         $('#example').DataTable();
+        $().ajax({
+            url: 'http://localhost:8080/e/topics',
+            method: 'GET'
+        }).done(function (data) {
+            $("#example").append(data);
+        })
     });
 </script>
+
 </html>

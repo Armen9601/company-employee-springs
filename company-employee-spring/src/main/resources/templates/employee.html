@@ -8,12 +8,18 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/1.11.0/css/dataTables.jqueryui.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/scroller/2.0.5/css/scroller.jqueryui.min.css">
 <body>
-<a href="/addEmploye"><button>Add Employee</button> </a> |
-<a href="/companies"><button>Companies</button> </a> |
-<a href="/logout"><button>Logout</button></a>
+<a href="/addEmploye">
+    <button>Add Employee</button>
+</a> |
+<a href="/companies">
+    <button>Companies</button>
+</a> |
+<a href="/logout">
+    <button>Logout</button>
+</a>
 <h2 style="text-align: center;">Employes</h2>
 <table id="example" class="display nowrap" style="width:100%">
-<thead>
+    <thead>
     <tr>
         <th>id</th>
         <th>name</th>
@@ -25,7 +31,7 @@
         <th>company name</th>
         <th>delete</th>
     </tr>
-</thead>
+    </thead>
     <tbody>
     <tr th:each="allEmployee:${allEmployees}">
         <td th:text="${allEmployee.getId()}"></td>

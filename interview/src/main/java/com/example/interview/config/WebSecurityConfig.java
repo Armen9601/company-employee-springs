@@ -8,7 +8,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.headers().frameOptions().disable()
@@ -27,7 +26,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .accessDeniedPage("/accessDenied")
                 .and()
                 .authorizeRequests()
-                .antMatchers("/addQuestion","/interview","/interviews","/addAnswer").hasRole("ADMIN")
+                .antMatchers("/addQuestion", "/interview", "/interviews", "/addAnswer").hasRole("ADMIN")
                 .anyRequest().permitAll();
     }
 }

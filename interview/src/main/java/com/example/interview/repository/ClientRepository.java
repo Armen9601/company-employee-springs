@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface ClientRepository extends JpaRepository<ClientAnswer, Integer> {
 
-    List <ClientAnswer> getByUserId(int userId);
+    List<ClientAnswer> getByUserId(int userId);
 
 
 }

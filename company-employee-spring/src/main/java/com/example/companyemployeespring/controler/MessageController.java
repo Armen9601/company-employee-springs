@@ -20,8 +20,13 @@ import java.util.List;
 
 
 @Controller
-@RequiredArgsConstructor
+
 public class MessageController {
+
+    public MessageController(MessageService messageService, EmployeeService employeeService) {
+        this.messageService = messageService;
+        this.employeeService = employeeService;
+    }
 
     private final MessageService messageService;
     private final EmployeeService employeeService;

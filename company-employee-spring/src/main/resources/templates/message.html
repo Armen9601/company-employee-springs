@@ -47,16 +47,18 @@
 
                 <div class="row">
 
-                    <div class="col-md-6 col-lg-4 py-3 wow zoomIn"  th:each="employesbyCompanyId:${byCompanyId}" >
+                    <div class="col-md-6 col-lg-4 py-3 wow zoomIn" th:each="employesbyCompanyId:${byCompanyId}">
                         <div class="card-doctor">
                             <div class="header">
                                 <img th:src="@{/productImage(productUrl=${employesbyCompanyId.getPicUrl()})}" alt="">
                                 <div class="meta">
-                                    <a th:href="@{/messages(id=${employesbyCompanyId.getId()})}"><span class="mai-logo-whatsapp"></span></a>
+                                    <a th:href="@{/messages(id=${employesbyCompanyId.getId()})}"><span
+                                            class="mai-logo-whatsapp"></span></a>
                                 </div>
                             </div>
-                            <div class="body" >
-                                <p class="text-xl mb-0" th:text="${employesbyCompanyId.getName()+' '+employesbyCompanyId.surname}"></p>
+                            <div class="body">
+                                <p class="text-xl mb-0"
+                                   th:text="${employesbyCompanyId.getName()+' '+employesbyCompanyId.surname}"></p>
                                 <span class="text-sm text-grey" th:text="${employesbyCompanyId.getPosition()}"></span>
                             </div>
                         </div>

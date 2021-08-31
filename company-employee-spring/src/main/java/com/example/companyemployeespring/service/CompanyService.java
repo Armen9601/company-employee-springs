@@ -6,10 +6,10 @@ import java.util.List;
 
 public interface CompanyService {
 
-List<Company> findAll();
+    List<Company> findAll();
 
-void deleteById(int id);
+    void deleteById(int id);
 
-void save(Company company);
+    void save(Company company);
 
 }
