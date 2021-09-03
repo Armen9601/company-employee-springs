@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8"/>
     <title>Login</title>
@@ -195,16 +195,17 @@
     </style>
 </head>
 <body id="home">
-<a href="/companies" style="color: white">Companies</a> |
-<a href="/employee" style="color: white">Employees</a>
+<div th:include="/fragments/header:: lang"></div>
+<a href="/companies" style="color: white" th:text="#{login.Companies}">Companies</a> |
+<a href="/employee" style="color: white" th:text="#{login.Employee}">Employees</a>
 <div class="rain">
     <div class="border start">
         <form method="post">
-            <label>Email</label>
-            <input name="username" type="text" placeholder="Email"/>
-            <label>Password</label>
-            <input name="password" type="password" placeholder="Password"/>
-            <input type="submit" value="LOG IN"/>
+            <label th:text="#{login.Email}">Email</label>
+            <input name="username" type="text" />
+            <label th:text="#{login.Password}">Password</label>
+            <input name="password" type="password" />
+            <input type="submit" th:value="#{login.LOGIN}" />
         </form>
     </div>
 </div>

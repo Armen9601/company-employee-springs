@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="./assets/css/theme.css">
 </head>
 <body>
+<div th:include="/fragments/header:: lang"></div>
 
 <div class="bg-light">
     <div class="page-section py-3 mt-md-n5 custom-index" style="margin-top: -1rem !important;">
@@ -31,8 +32,9 @@
                         <div class="card-service wow fadeInUp">
                             <div class="circle-shape bg-secondary text-white">
                                 <span class="mai-chatbubbles-outline"></span>
+
                             </div>
-                            <p><span>Chat</span> with a Employees</p>
+                            <p th:text="#{empl.Chat}"><span >Chat</span></p>
                         </div>
                     </div>
                 </a>
@@ -42,7 +44,7 @@
                             <div class="circle-shape bg-primary text-white">
                                 <span class="mai-shield-checkmark"></span>
                             </div>
-                            <p><span>Add</span>Topic</p>
+                            <p th:text="#{empl.Topics}">Topics</p>
                         </div>
                     </div>
                 </a>
@@ -51,7 +53,7 @@
                         <div class="card-service wow fadeInUp">
                             <div class="circle-shape bg-secondary text-white">
                             </div>
-                            <p><span>Logout</span></p>
+                            <p><span th:text="#{empl.Logout}">Logout</span></p>
                         </div>
                     </div>
                 </a>
@@ -78,7 +80,7 @@
 
 <div class="page-section">
     <div class="container">
-        <h1 class="text-center mb-5 wow fadeInUp">Our Employees</h1>
+        <h1 class="text-center mb-5 wow fadeInUp" th:text="#{empl.Our.Employees}">Our Employees</h1>
 
         <div class="owl-carousel wow fadeInUp" id="doctorSlideshow">
             <div class="item" th:each="employesbyCompanyId:${byCompanyId}">

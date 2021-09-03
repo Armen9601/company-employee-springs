@@ -46,13 +46,20 @@
 <script>
     $(document).ready(function () {
         $('#example').DataTable();
+getTopic();
+setInterval(getTopic,3000)
+
+    })
+    function getTopic(){
         $().ajax({
             url: 'http://localhost:8080/e/topics',
             method: 'GET'
         }).done(function (data) {
-            $("#example").append(data);
+            $("#example").html(data);
         })
-    });
+
+    }
+
 </script>
 
 </html>

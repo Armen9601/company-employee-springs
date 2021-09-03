@@ -1,8 +1,6 @@
 package com.example.companyemployeespring.service;
 
 import com.example.companyemployeespring.entity.Topic;
-import com.example.companyemployeespring.security.CurrentUser;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
 import java.util.List;
 
@@ -17,7 +15,8 @@ public interface TopicService {
     List<Topic> findByEmployee_Company_Id(int id);
 
     Topic getById(int id);
-    void deleteById(int id,  @AuthenticationPrincipal int currentUser);
+
+    void deleteById(int id, int currentUserId);
 
 
 }
